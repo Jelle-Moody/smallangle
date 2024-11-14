@@ -4,17 +4,17 @@ from numpy import pi
 import pandas as pd
 
 @click.group()
-def cmd_group():
+def smallangle():
     pass
 
-@cmd_group.command()
+@smallangle.command()
 @click.argument()
 def sin(number):
     x = np.linspace(0, 2 * pi, number)
     df = pd.DataFrame({"x": x, "sin (x)": np.sin(x)})
     print(df)
 
-@cmd_group.command()
+@smallangle.command()
 @click.argument()
 def tan(number):
     x = np.linspace(0, 2 * pi, number)
