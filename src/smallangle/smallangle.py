@@ -45,6 +45,22 @@ def tan(number):
     df = pd.DataFrame({"x": x, "tan (x)": np.tan(x)})
     print(df)
 
+@smallangle.command()
+@click.argument(
+    "accuracy",
+    default=0.01,
+)
+def approx(accuracy):
+    """Checks for which x the small angle approximation holds for a certain accuracy.
+
+    Args:
+        accuracy (float): the difference between the approximation and x has to be smaller then the accuracy
+    """ 
+    for x in np.arange(0, 1, 0.001):
+        difference = np.sqrt((x - np.sin(x))**2)
+        if difference > accuracy:
+            print(f"For an accuracy of {accuracy}, the small-angle approximation holds up to x = {x - 0.001}.")
+            break
 
 if __name__ == "__main__":
     smallangle()
