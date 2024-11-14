@@ -3,6 +3,9 @@ import numpy as np
 from numpy import pi
 import pandas as pd
 
+@click.group()
+def cmd_group():
+    pass
 
 def sin(number):
     x = np.linspace(0, 2 * pi, number)
